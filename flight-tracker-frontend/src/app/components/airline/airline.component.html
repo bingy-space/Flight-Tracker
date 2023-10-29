@@ -1,0 +1,49 @@
+<div class="pagetitle">
+  <h1>Airline Information</h1>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+  <div class="col-12">
+    <div class="row justify-content-start">
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Airline Name</th>
+                  <th scope="col">Airline Code</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let tempAirline of airlines">
+                <tr (click)="getFlightByAirlineCode(tempAirline.code, tempAirline.name)"
+                  (click)="getAirlineImageUrlByCode(tempAirline.code)">
+                  <td>{{ tempAirline.name }}</td>
+                  <td>{{ tempAirline.code }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"><img src="{{ airlineUrl }}" alt=""> <h1>{{ currentAirline }}</h1> <h4>Flight Number</h4></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tempFlight of flights">
+                  <td>{{ tempFlight.number }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
