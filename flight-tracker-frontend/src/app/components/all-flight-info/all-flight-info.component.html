@@ -1,0 +1,59 @@
+<div class="pagetitle">
+    <h1>Flight Information</h1>
+</div><!-- End Page Title -->
+<section class="section dashboard">
+    <div class="row">
+        <div class="col-2">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Filter By</h5>
+                    <table class="table table-borderless datatable">
+                        <tbody>
+                            <tr>
+                                <td>Arrivals</td>
+                            </tr>
+                            <tr>
+                                <td>Departures</td>
+                            </tr>
+                            <tr>
+                                <td>Date</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-10">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Arrivals / Departures<span> | Today</span></h5>
+                    <table class="table table-borderless datatable">
+                        <thead> 
+                            <tr>
+                                <th scope="col">Airline</th>
+                                <th scope="col">Flight</th>
+                                <th scope="col">To</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Scheduled</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Gate</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let tempFlightStatus of flightStatusInfo">
+                            <tr>
+                                <th scope="row">{{ tempFlightStatus.airline }}</th>
+                                <td>{{ tempFlightStatus.flight }}</td>
+                                <td>{{ tempFlightStatus.airportCode }}</td>
+                                <td><span class="badge bg-success">{{ tempFlightStatus.flightCode }}</span></td>
+                                <td>{{ tempFlightStatus.scheduledTime }}</td>
+                                <td>{{ tempFlightStatus.updateTime }}</td>
+                                <td>{{ tempFlightStatus.gate }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
