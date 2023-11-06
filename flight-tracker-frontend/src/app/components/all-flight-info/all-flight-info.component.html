@@ -31,6 +31,7 @@
                     <table class="table table-borderless datatable">
                         <thead> 
                             <tr>
+                                <th scope="col">Flight Type</th>
                                 <th scope="col">Airline</th>
                                 <th scope="col">Flight</th>
                                 <th scope="col">To</th>
@@ -42,10 +43,11 @@
                         </thead>
                         <tbody *ngFor="let tempFlightStatus of flightStatusInfo">
                             <tr>
+                                <th><span class="badge bg-dark">{{ tempFlightStatus.flightCode }}</span></th>
                                 <th scope="row">{{ tempFlightStatus.airline }}</th>
                                 <td>{{ tempFlightStatus.flight }}</td>
                                 <td>{{ tempFlightStatus.airportCode }}</td>
-                                <td><span class="badge bg-success">{{ tempFlightStatus.flightCode }}</span></td>
+                                <td><span class="badge bg-success">{{ tempFlightStatus.status }}</span></td>
                                 <td>{{ tempFlightStatus.scheduledTime }}</td>
                                 <td>{{ tempFlightStatus.updateTime }}</td>
                                 <td>{{ tempFlightStatus.gate }}</td>
