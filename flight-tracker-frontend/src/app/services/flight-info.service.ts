@@ -18,6 +18,14 @@ export class FlightInfoService {
     )
   }
 
+  getFlightStatusInfoByFlightCode(flightCode: string): Observable<FlightInfo[]>{
+    const flightCodeUrl = `${this.baseUrl}/search/findByFlightCodeContaining?flightCode=${flightCode}`;
+
+    return this.httpClient.get<GetResponseFlightInfo>(flightCodeUrl).pipe(
+      map(response => response._embedded.flight_Infoes)
+    )
+  }
+
 }
 interface GetResponseFlightInfo{
   _embedded: {

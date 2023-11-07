@@ -29,6 +29,15 @@ export class AllFlightInfoComponent {
       }
     )
   }
+  // Get list of flight status info by flight code
+  // Param: flightCode
+  getFlightStatusInfoByFlightCode(flightCode: string){
+    this.flightInfoService.getFlightStatusInfoByFlightCode(flightCode).subscribe(
+      data => {
+        this.flightStatusInfo = data;
+      }
+    )
+  }
 
   // Get airport city name by airport code from JSON
   // Param: airportCode
@@ -37,8 +46,6 @@ export class AllFlightInfoComponent {
 
     for(let i = 0; i <= this.airportInfoData.length; i++){
       if(this.airportInfoData[i]['iata_code'] == airportCodeTemp){
-        console.log('Find it')
-        console.log(this.airportInfoData[i].city)
         return this.airportInfoData[i].city;
       }
     }

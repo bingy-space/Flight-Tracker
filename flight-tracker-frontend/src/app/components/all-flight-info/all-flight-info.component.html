@@ -10,10 +10,13 @@
                     <table class="table table-borderless datatable">
                         <tbody>
                             <tr>
-                                <td>Arrivals</td>
+                                <td (click)="listFlightStatusInfo()">All</td>
                             </tr>
                             <tr>
-                                <td>Departures</td>
+                                <td (click)="getFlightStatusInfoByFlightCode('Arrivals')">Arrivals</td>
+                            </tr>
+                            <tr>
+                                <td (click)="getFlightStatusInfoByFlightCode('Departures')">Departures</td>
                             </tr>
                             <tr>
                                 <td>Date</td>
