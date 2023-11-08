@@ -8,6 +8,7 @@ import { AirlineComponent } from './components/airline/airline.component';
 import { AllFlightInfoComponent } from './components/all-flight-info/all-flight-info.component';
 import { EditFlightInfoComponent } from './components/edit-flight-info/edit-flight-info.component';
 import { NewFlightInfoComponent } from './components/new-flight-info/new-flight-info.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
