@@ -6,11 +6,10 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">General Form Elements</h5>
                     <!-- General Form Elements -->
                     <form>
                         <fieldset class="row mb-3">
-                            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                            <legend class="col-form-label col-sm-2 pt-0">Flight Arrivals / Departures</legend>
                             <div class="col-sm-10">
                               <div class="form-check">
                                 <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
@@ -36,7 +35,7 @@
                             <label class="col-sm-2 col-form-label">Airline</label>
                             <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example" (change)="getFlight($event)">
-                                    <option selected>Open this select menu</option>
+                                    <option selected>Selected Airline</option>
                                     <option *ngFor="let tempAirline of airlines">
                                         {{ tempAirline.name }} | {{ tempAirline.code }}
                                     </option>
@@ -57,10 +56,10 @@
                             <label class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>Select Status</option>
+                                    <option *ngFor="let tempStatus of status">
+                                        {{ tempStatus.code }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -68,10 +67,10 @@
                             <label class="col-sm-2 col-form-label">Gate</label>
                             <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option selected>Select Gate</option>
+                                    <option *ngFor="let tempGate of gates">
+                                        {{ tempGate.number }}
+                                    </option>
                                 </select>
                             </div>
                         </div>
