@@ -6,6 +6,7 @@ import { Gate } from 'src/app/common/gate';
 import { Status } from 'src/app/common/status';
 import { AirlineService } from 'src/app/services/airline.service';
 import { FlightInfoService } from 'src/app/services/flight-info.service';
+import * as airportInfo from './../../../assets/airports.json';
 
 @Component({
   selector: 'app-new-flight-info',
@@ -18,6 +19,13 @@ export class NewFlightInfoComponent {
   flights: Flight[] = [];
   status: Status[] = [];
   gates: Gate[] = [];
+  cities: any[] = [];
+  uniqueCities: any[] = [];
+
+
+  airportNameAndIATA: any[] = []; 
+
+  airportInfoData: any = airportInfo;
 
   constructor(private formBuilder: FormBuilder, 
               private airlineService: AirlineService, 
@@ -25,10 +33,11 @@ export class NewFlightInfoComponent {
 
   ngOnInit(): void {
     // Populate airlines, status, and gates
+    // Populate airport country and city
     this.getAirlines();
     this.getStatus();
     this.getGates();
-
+    this.getAirportCity();
   }
   // Populate airlines
   getAirlines() {
@@ -72,6 +81,30 @@ export class NewFlightInfoComponent {
         console.log(data);
       }
     )
+  }
+
+  // Populate airport cities with sort by alphabetical order and unique
+  getAirportCity(){
+    for(let i = 0; i <= this.airportInfoData.length; i++){
+      if(this.airportInfoData[i]['country'] == 'United States'){
+        // console.log(this.airportInfoData[i].city)
+        this.cities.push(this.airportInfoData[i].city);
+        this.uniqueCities = [...new Set(this.cities)].sort();
+      }
+    }
+  }
+
+  // Populate airport name and IATA code based on airport city
+  getAirportNameAndIataByCity(city: any){
+    console.log(city)
+    this.airportNameAndIATA = [];
+    for(let i=0; i <= this.airportInfoData.length; i++){
+      if(this.airportInfoData[i]['city'] == city && this.airportInfoData[i]['country'] == 'United States'){
+        this.airportNameAndIATA.push(this.airportInfoData[i])
+        console.log(this.airportNameAndIATA)
+      }
+    }
+
   }
 
 }
