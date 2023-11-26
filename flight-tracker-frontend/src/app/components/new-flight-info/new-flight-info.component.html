@@ -7,18 +7,18 @@
             <div class="card">
                 <div class="card-body">
                     <!-- General Form Elements -->
-                    <form>
+                    <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                         <fieldset class="row mb-3">
                             <legend class="col-form-label col-sm-2 pt-0">Flight Arrivals / Departures</legend>
                             <div class="col-sm-10">
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Arrivals" formControlName="flightCode" checked>
                                 <label class="form-check-label" for="gridRadios1">
                                   Arrivals
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Departures" formControlName="flightCode">
                                 <label class="form-check-label" for="gridRadios2">
                                   Departures
                                 </label>
@@ -34,7 +34,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Airline</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example" (change)="getFlight($event)">
+                                <select class="form-select" aria-label="Default select example" formControlName="airline" (change)="getFlight($event)">
                                     <option selected>Selected Airline</option>
                                     <option *ngFor="let tempAirline of airlines">
                                         {{ tempAirline.name }} | {{ tempAirline.code }}
@@ -45,7 +45,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Flight</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" formControlName="flight">
                                     <option  *ngFor="let tempFlight of flights">
                                         {{ tempFlight.number }}
                                     </option>
@@ -55,9 +55,9 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" formControlName="status">
                                     <option selected>Select Status</option>
-                                    <option *ngFor="let tempStatus of status">
+                                    <option *ngFor="let tempStatus of statusList">
                                         {{ tempStatus.code }}
                                     </option>
                                 </select>
@@ -66,7 +66,7 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Gate</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example">
+                                <select class="form-select" aria-label="Default select example" formControlName="gate">
                                     <option selected>Select Gate</option>
                                     <option *ngFor="let tempGate of gates">
                                         {{ tempGate.number }}
@@ -88,8 +88,11 @@
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Airport Name and Code</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option *ngFor="let tempNameIATA of airportNameAndIATA | keyvalue">
+                                <select class="form-select" aria-label="Default select example" formControlName="airportCode">
+                                    <!-- <option *ngFor="let tempNameIATA of airportNameAndIATA | keyvalue">
+                                        {{ tempNameIATA.value['name'] }} | {{ tempNameIATA.value['iata_code'] }}
+                                    </option> -->
+                                    <option *ngFor="let tempNameIATA of airportNameAndIATA | keyvalue" value="{{tempNameIATA.value['iata_code']}}">
                                         {{ tempNameIATA.value['name'] }} | {{ tempNameIATA.value['iata_code'] }}
                                     </option>
                                 </select>
@@ -98,7 +101,7 @@
                         <div class="row mb-3">
                             <label for="inputTime" class="col-sm-2 col-form-label">Scheduled Time</label>
                             <div class="col-sm-10">
-                              <input type="time" class="form-control">
+                              <input type="time" class="form-control" formControlName="scheduledTime">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -107,7 +110,6 @@
                                 <button type="submit" class="btn btn-primary">Submit Form</button>
                             </div>
                         </div>
-
                     </form><!-- End General Form Elements -->
                 </div>
             </div>

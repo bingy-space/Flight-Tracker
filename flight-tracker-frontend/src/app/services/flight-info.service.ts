@@ -30,7 +30,7 @@ export class FlightInfoService {
     )
   }
 
-  getStatus(): Observable<Status[]>{
+  getAllStatus(): Observable<Status[]>{
     return this.httpClient.get<GetResponseStatus>(this.statusUrl).pipe(
       map(response => response._embedded.status)
     )
