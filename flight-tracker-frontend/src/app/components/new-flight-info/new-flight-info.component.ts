@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Airline } from 'src/app/common/airline';
 import { Flight } from 'src/app/common/flight';
 import { Gate } from 'src/app/common/gate';
@@ -7,6 +7,7 @@ import { Status } from 'src/app/common/status';
 import { AirlineService } from 'src/app/services/airline.service';
 import { FlightInfoService } from 'src/app/services/flight-info.service';
 import * as airportInfo from './../../../assets/airports.json';
+import { NewFlightService } from 'src/app/services/new-flight.service';
 
 @Component({
   selector: 'app-new-flight-info',
@@ -29,7 +30,8 @@ export class NewFlightInfoComponent {
 
   constructor(private formBuilder: FormBuilder, 
               private airlineService: AirlineService, 
-              private flightInfoService: FlightInfoService) { }
+              private flightInfoService: FlightInfoService,
+              private newFlightService: NewFlightService) { }
 
   ngOnInit(): void {
 
@@ -133,6 +135,15 @@ export class NewFlightInfoComponent {
   onSubmit(){
     console.log("New Flight POST")
     console.log(this.formGroup.value);
+
+    this.newFlightService.postNewFlight(this.formGroup.value).subscribe({
+      next: response => {
+        alert(`New Flight POST`)
+      },
+      error: err => {
+        alert(`There was an error: ${err.message}`);
+      }
+    })
   }
 
 }
