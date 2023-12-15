@@ -42,6 +42,7 @@
                                 <th scope="col">Scheduled</th>
                                 <th scope="col">Update</th>
                                 <th scope="col">Gate</th>
+                                <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody *ngFor="let tempFlightStatus of flightStatusInfo">
@@ -54,6 +55,7 @@
                                 <td>{{ tempFlightStatus.scheduledTime }}</td>
                                 <td>{{ tempFlightStatus.updateTime }}</td>
                                 <td>{{ tempFlightStatus.gate }}</td>
+                                <td>{{ tempFlightStatus.scheduledDate }}</td>
                             </tr>
                         </tbody>
                     </table>

@@ -1,13 +1,4 @@
 export class FlightInfo {
-    // id: number;
-    // airline: string;
-    // flight: string;
-    // status: string;
-    // gate: string;
-    // flightCode: string;
-    // airPortCode: string;
-    // scheduledTime: string;
-    // updateTime: string;
 
     constructor(public id: number,
         public airline: string,
@@ -17,5 +8,6 @@ export class FlightInfo {
         public flightCode: string,
         public airportCode: string,
         public scheduledTime: string,
+        public scheduledDate: string,
         public updateTime: string){}
 }

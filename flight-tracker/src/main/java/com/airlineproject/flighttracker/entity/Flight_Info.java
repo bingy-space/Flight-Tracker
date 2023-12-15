@@ -1,5 +1,6 @@
 package com.airlineproject.flighttracker.entity;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +36,9 @@ public class Flight_Info {
 
     @Column(name = "airport_code")
     private String airportCode;
+    
+    @Column(name = "scheduled_date")
+    private String scheduledDate;
     
     @Column(name = "scheduled_time")
     private String scheduledTime;
