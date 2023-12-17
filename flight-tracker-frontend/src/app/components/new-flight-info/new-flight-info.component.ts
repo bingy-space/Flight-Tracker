@@ -43,7 +43,8 @@ export class NewFlightInfoComponent {
       flightCode: [''],
       airportCode: [''],
       scheduledTime: [''],
-      updateTime: ['']
+      updateTime: [''],
+      scheduledDate: ['']
     })
 
     // Populate airlines, status, and gates
