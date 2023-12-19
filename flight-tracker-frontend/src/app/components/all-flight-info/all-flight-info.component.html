@@ -19,7 +19,17 @@
                                 <td (click)="getFlightStatusInfoByFlightCode('Departures')">Departures</td>
                             </tr>
                             <tr>
-                                <td>Date</td>
+                                <td><div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      Date | 
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect03">
+                                        <option selected>Choose...</option>
+                                        <option  *ngFor="let tempDate of scheduledDateList">
+                                            {{ tempDate }}
+                                        </option>
+                                    </select>
+                                  </div></td>
                             </tr>
                         </tbody>
                     </table>
@@ -51,6 +61,7 @@
                                 <th scope="row">{{ tempFlightStatus.airline }}</th>
                                 <td>{{ tempFlightStatus.flight }}</td>
                                 <td>{{ tempFlightStatus.airportCode }}</td>
+                                <!-- <td><span class="badge bg-success">{{ tempFlightStatus.status }}</span></td> -->
                                 <td><span class="badge bg-success">{{ tempFlightStatus.status }}</span></td>
                                 <td>{{ tempFlightStatus.scheduledTime }}</td>
                                 <td>{{ tempFlightStatus.updateTime }}</td>

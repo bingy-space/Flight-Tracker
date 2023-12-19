@@ -11,12 +11,14 @@ import * as airportInfo from './../../../assets/airports.json';
 export class AllFlightInfoComponent {
   flightStatusInfo: FlightInfo[] = [];
   airportInfoData: any = airportInfo;
+  scheduledDateList: any[] = [];
 
   constructor(private flightInfoService: FlightInfoService){}
 
   ngOnInit(): void{
     this.listFlightStatusInfo();
     // this.getAirportCityByCode();
+    this.listFlightScheduledDate();
   }
 
   // List of flight status info
@@ -24,6 +26,7 @@ export class AllFlightInfoComponent {
     this.flightInfoService.getFlightStatusInfo().subscribe(
       data => {
         this.flightStatusInfo = data;
+        // console.log(this.flightStatusInfo)
         // Converting airport code to airport city name
         this.flightStatusInfo[0].airportCode = this.getAirportCityByCode(this.flightStatusInfo);
       }
@@ -51,5 +54,15 @@ export class AllFlightInfoComponent {
     }
   }
 
+  // List of flight scheduled date
+  listFlightScheduledDate(){
 
+    this.flightInfoService.getFlightStatusInfo().subscribe(
+      data => {
+        data.forEach(e => this.scheduledDateList.push(e.scheduledDate))
+        this.scheduledDateList = [...new Set(this.scheduledDateList)];
+        // console.log(this.scheduledDateList)
+      }
+    )
+  }
 }
